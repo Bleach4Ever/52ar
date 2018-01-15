@@ -1,0 +1,24 @@
+
+#macro(WindowBegin)
+    #parse('/jrf-vm/head.vm')
+    #JrfWindowBegin
+    <form id="form" name="form" method="post" onsubmit="return false;">
+#end
+
+#macro(WindowEnd)
+	</form>
+	#JrfWindowEnd
+#end
+
+
+
+#macro(PageBegin)
+    #parse('/jrf-vm/head.vm')
+    #JrfPageBegin
+    <form id="form" name="form" method="post" onsubmit="return false;">
+#end
+
+#macro(PageEnd)
+    </form>
+    #JrfPageEnd
+#end

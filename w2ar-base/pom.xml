@@ -1,0 +1,426 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<!-- 52ar-base -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.w2ar</groupId>
+	<artifactId>w2ar-base</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>${project.artifactId}</name>
+	<description>${project.artifactId}</description>
+	<packaging>pom</packaging>
+	
+	
+	<profiles>
+		<profile>
+			<id>local</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				
+				<!-- 编译环境 -->
+				<env>local</env>
+				
+				<!-- 系统名称 -->
+				<profile.project.name>52ar-base</profile.project.name>
+				
+				<!-- 日志 -->
+				<profile.logger.level>INFO</profile.logger.level>
+				<profile.logger.sql>false</profile.logger.sql>
+				<profile.logger.sql.show>INFO</profile.logger.sql.show>
+				<profile.logger.file>D:\\w2ar-base.log</profile.logger.file>
+				
+				<!-- 数据库 -->
+				<profile.db.driverClassName>com.mysql.jdbc.Driver</profile.db.driverClassName>
+				<profile.db.url><![CDATA[jdbc:mysql://192.168.100.101:3306/ysx_msg?useUnicode=true&amp;characterEncoding=utf8]]></profile.db.url>
+				<profile.db.username>root</profile.db.username>
+				<profile.db.password><![CDATA[ysxrootPassword01!]]></profile.db.password>
+				<profile.db.initialSize>1</profile.db.initialSize>
+				<profile.db.maxActive>20</profile.db.maxActive>
+				<profile.db.maxIdle>20</profile.db.maxIdle>
+				<profile.db.minIdle>10</profile.db.minIdle>
+				
+			
+			</properties>
+		</profile>
+	</profiles>
+	
+	<properties>
+		<encoding>UTF-8</encoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<jdk.version>1.6</jdk.version>
+		
+		<spring.version>3.2.0.RELEASE</spring.version>
+		<mybatis.version>3.2.8</mybatis.version>
+		<mybatis.spring.version>1.1.1</mybatis.spring.version>
+		<mysql.version>5.1.13</mysql.version>
+		<velocity.version>1.7</velocity.version>
+		<velocity.tools.version>2.0</velocity.tools.version>
+		
+		<junit.version>4.11</junit.version>
+		<servlet.version>2.5</servlet.version>
+		<cglib.vesion>2.2</cglib.vesion>
+		<ezmorph.version>1.0.6</ezmorph.version>
+		<jackson.version>1.9.2</jackson.version>
+		
+		<commons.collections.version>3.2</commons.collections.version>
+		<commons.lang.version>2.6</commons.lang.version>
+		<commons.logging.version>1.1.3</commons.logging.version>
+		<commons.fileupload.version>1.3.1</commons.fileupload.version>
+		<commons.beanutils.version>1.8.3</commons.beanutils.version>
+		<commons.codec.version>1.6</commons.codec.version>
+		<commons.digester.version>2.0</commons.digester.version>
+		<commons.httpclient.version>3.1</commons.httpclient.version>
+		<alibaba.druid.version>1.0.16</alibaba.druid.version>
+		<aspectj.version>1.6.11</aspectj.version>
+		<csv.version>2.3</csv.version>
+		<poi.version>3.12</poi.version>
+		
+		<log4j.version>1.2.9</log4j.version>
+		<slf4j.version>1.7.5</slf4j.version>
+		
+
+		<current.version>1.0.0-SNAPSHOT</current.version>
+	
+	</properties>
+	
+	<dependencyManagement>
+		<dependencies>
+
+			<!-- w2ar-base-dao -->
+			<dependency>
+				<groupId>org.w2ar</groupId>
+				<artifactId>w2ar-base-dao</artifactId>
+				<version>${current.version}</version>
+			</dependency>
+			
+			<!-- w2ar-base-domain -->
+			<dependency>
+				<groupId>org.w2ar</groupId>
+				<artifactId>w2ar-base-domain</artifactId>
+				<version>${current.version}</version>
+			</dependency>
+			
+			<!-- w2ar-base-service -->
+			<dependency>
+				<groupId>org.w2ar</groupId>
+				<artifactId>w2ar-base-service</artifactId>
+				<version>${current.version}</version>
+			</dependency>
+
+			<!-- junit -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+	
+			
+			<!-- servlet -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>${servlet.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			
+			<!-- ezmorph -->
+			<dependency>
+				<groupId>net.sf.ezmorph</groupId>
+				<artifactId>ezmorph</artifactId>
+				<version>${ezmorph.version}</version>
+			</dependency>
+			
+			<!-- spring -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+		      <groupId>org.springframework</groupId>
+		      <artifactId>spring-context-support</artifactId>
+		      <version>${spring.version}</version>
+		    </dependency>
+		           <!-- spring test -->
+			<dependency>
+			  <groupId>org.springframework</groupId> 
+			  <artifactId>spring-test</artifactId> 
+			  <version>${spring.version}</version>  
+			</dependency>
+			
+			
+				<!-- 阿里巴巴druid -->
+			<dependency>
+             <groupId>com.alibaba</groupId>
+             <artifactId>druid</artifactId>
+             <version>${alibaba.druid.version}</version>
+        	</dependency>
+        	
+			<!-- commons -->
+			<dependency>
+				<groupId>commons-collections</groupId>
+				<artifactId>commons-collections</artifactId>
+				<version>${commons.collections.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>${commons.lang.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>${commons.logging.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>${commons.fileupload.version}</version>
+			</dependency>
+			<dependency>
+
+				<groupId>commons-beanutils</groupId>
+				<artifactId>commons-beanutils</artifactId>
+				<version>${commons.beanutils.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>${commons.codec.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-digester</groupId>
+				<artifactId>commons-digester</artifactId>
+				<version>${commons.digester.version}</version>
+			</dependency>
+	<!-- 		<dependency>
+				<groupId>commons-httpclient</groupId>
+				<artifactId>commons-httpclient</artifactId>
+				<version>${commons.httpclient.version}</version>
+			</dependency> -->
+			
+			<!-- cglib -->
+			<dependency>
+				<groupId>cglib</groupId>
+				<artifactId>cglib</artifactId>
+				<version>${cglib.vesion}</version>
+			</dependency>
+			
+			<!-- aspectj -->
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjrt</artifactId>
+				<version>${aspectj.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+				<version>${aspectj.version}</version>
+			</dependency>
+			
+			<!-- poi -->
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi</artifactId>
+				<version>${poi.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-ooxml</artifactId>
+				<version>${poi.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-ooxml-schemas</artifactId>
+				<version>${poi.version}</version>
+			</dependency>
+			
+			<!-- log4j -->
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${log4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			
+			<!-- velocity -->
+			<dependency>
+				<groupId>org.apache.velocity</groupId>
+				<artifactId>velocity</artifactId>
+				<version>${velocity.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.velocity</groupId>
+				<artifactId>velocity-tools</artifactId>
+				<version>${velocity.tools.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.apache.struts</groupId>
+						<artifactId>struts-core</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.apache.struts</groupId>
+						<artifactId>struts-taglib</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.apache.struts</groupId>
+						<artifactId>struts-tiles</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>sslext</groupId>
+						<artifactId>sslext</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>dom4j</groupId>
+						<artifactId>dom4j</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.jackson</groupId>
+				<artifactId>jackson-mapper-asl</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			
+			<!-- mybatis -->
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis</artifactId>
+				<version>${mybatis.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis-spring</artifactId>
+				<version>${mybatis.spring.version}</version>
+			</dependency>
+			
+			<!-- mysql -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.version}</version>
+			</dependency>
+			
+			<!-- csv -->
+			<dependency>
+				<groupId>net.sf.opencsv</groupId>
+				<artifactId>opencsv</artifactId>
+				<version>${csv.version}</version>
+			</dependency>
+
+		
+		</dependencies>
+	</dependencyManagement>
+	
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		
+		<plugins>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+					<encoding>${encoding}</encoding>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
+				<configuration>
+					<packagingExcludes>WEB-INF/web.xml</packagingExcludes>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<encoding>${encoding}</encoding>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			
+		</plugins>
+		
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+	</build>
+	
+	<modules>
+		<module>w2ar-base-web</module>
+		<module>w2ar-base-dao</module>
+		<module>w2ar-base-domain</module>
+		<module>w2ar-base-service</module>
+	</modules>
+
+</project>

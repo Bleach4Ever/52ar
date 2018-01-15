@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Enum常量声明统一文件 [使用方法]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1) 根据级联键获取文本内容：JrfTools.Enum.getText("OrderType.BaoXian"); 输出：保险项目
+2) 根据级联键获取值：JrfTools.Enum.getValue("OrderType.BaoXian"); 输出：102
+3) 根据值获取文本内容：JrfTools.Enum.getText("OrderType", 102); 输出：保险项目
+4) 自动转化获取值：JrfTools.Enum.getConvert("OrderState", 15); 输出：16
+5) 前台页面的下拉框HTML: JrfTools.Enum.getOptions("OrderType");  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+<jrf>
+	
+	<!-- 支付状态 -->
+	<enum name="PayState">
+		<property name="YZF" value="1">已支付</property>
+		<property name="YZF" value="2">支付中</property>
+	</enum>
+	
+</jrf>

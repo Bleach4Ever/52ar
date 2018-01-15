@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+        	<param name="ConversionPattern" value="[52ar-base %d{yyyy-MM-dd HH:mm:ss}]: [%p] - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="R" class="org.apache.log4j.DailyRollingFileAppender">
+    	<param name="File" value="D:\\w2ar-base.log"/>
+     	<param name="encoding" value="UTF-8" />
+        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[52ar-base %d{yyyy-MM-dd HH:mm:ss}]: [%p] - %m%n"/>
+        </layout>
+    </appender>
+    
+    <appender name="Async" class="org.apache.log4j.AsyncAppender">
+        <param name="BufferSize" value="2048"/>
+        <appender-ref ref="R"/>
+    </appender>
+    
+     
+     <logger name="java.sql" additivity="false">
+	  <level value="INFO" />
+	 </logger>
+    
+     <logger name="com.ibatis" additivity="false">
+	  <level value="INFO" />
+	 </logger>
+
+    <root>
+        <priority value="INFO"/>
+        <appender-ref ref="stdout"/>
+        <appender-ref ref="R"/>
+    </root>
+</log4j:configuration>
